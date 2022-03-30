@@ -7,7 +7,7 @@ use solana_program::{
     pubkey::Pubkey,
 };
 
-use crate::instruction::Instruction;
+use crate::instruction::EchoInstruction;
 
 pub struct Processor {}
 
