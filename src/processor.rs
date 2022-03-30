@@ -39,6 +39,8 @@ mod test {
 
     #[tokio::test]
     async fn test_echo() {
+        // TODO: This is more of integration test.
+        // Simplify unit testing, or remove it completely
         let program_id = Pubkey::new_unique();
 
         let (mut banks_client, payer, recent_blockhash) = ProgramTest::new(
@@ -50,11 +52,13 @@ mod test {
         let mut transaction = Transaction::new_with_payer(
             &[Instruction::new_with_borsh(
                 program_id,
-                &vec![1, 2, 3],
+                &vec![1u8],
                 vec![AccountMeta::new(payer.pubkey(), false)], //writable account
             )],
             Some(&payer.pubkey()),
         );
         transaction.sign(&[&payer], recent_blockhash);
+
+        banks_client.process_transaction(transaction).await.unwrap();
     }
 }
