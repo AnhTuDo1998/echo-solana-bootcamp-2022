@@ -39,18 +39,15 @@ pub fn echo(
     echo_data: Vec<u8>,
 ) -> Result<Instruction, ProgramError> {
     // Pack an Echo instruction using Borsh
-    let init_data = EchoInstruction::Echo{data: echo_data};
+    let init_data = EchoInstruction::Echo { data: echo_data };
     let data = init_data.try_to_vec()?;
 
     // Pack account for Echo
-    let accounts = vec![
-        AccountMeta::new(*echo_key,false)
-    ];
-    
+    let accounts = vec![AccountMeta::new(*echo_key, false)];
+
     Ok(Instruction {
         program_id: *program_id,
         accounts,
         data,
     })
-
 }
