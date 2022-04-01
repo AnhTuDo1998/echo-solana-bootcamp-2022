@@ -58,7 +58,6 @@ impl Processor {
                     *to = *from;
                 }
                 msg!("Copied Echo Buffer from Account: {:?}", echo_buffer);
-                // TODO find a way to written back into blockchain
             }
             _ => unimplemented!(),
         }
