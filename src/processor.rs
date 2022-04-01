@@ -58,7 +58,7 @@ impl Processor {
                     *to = *from;
                 }
                 msg!("Copied Echo Buffer from Account: {:?}", echo_buffer);
-                //echo_buffer.serialize(&mut *echo_account_info.data.borrow_mut()).map_err(|_| ProgramError::InvalidInstructionData)?
+                // TODO find a way to written back into blockchain
             }
             _ => unimplemented!(),
         }
